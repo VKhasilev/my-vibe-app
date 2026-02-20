@@ -1,8 +1,11 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, ArrowLeft, ArrowRight, CreditCard, Truck, CheckCircle } from 'lucide-react'
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 export default function Checkout({ isOpen, onClose, cartItems, onComplete }) {
+  const { t, i18n } = useTranslation()
+  const isRTL = i18n.dir() === 'rtl'
   const [step, setStep] = useState(1)
   const [formData, setFormData] = useState({
     fullName: '',
@@ -71,11 +74,11 @@ export default function Checkout({ isOpen, onClose, cartItems, onComplete }) {
             >
               {/* Header */}
               <div className="p-6 border-b border-white/20 flex items-center justify-between">
-                <h2 className="text-2xl font-bold text-white">Checkout</h2>
+                <h2 className="text-2xl font-bold text-white">{t('checkout.title')}</h2>
                 <button
                   onClick={onClose}
                   className="p-2 rounded-xl hover:bg-white/20 transition-colors"
-                  aria-label="Close checkout"
+                  aria-label={t('checkout.closeAria')}
                 >
                   <X size={24} className="text-white" />
                 </button>
@@ -91,7 +94,7 @@ export default function Checkout({ isOpen, onClose, cartItems, onComplete }) {
                       {step > 1 ? <CheckCircle size={20} className="text-white" /> : <Truck size={20} className="text-white" />}
                     </div>
                     <span className={`font-medium ${step >= 1 ? 'text-white' : 'text-white/50'}`}>
-                      Shipping
+                      {t('checkout.shippingStep')}
                     </span>
                   </div>
                   <div className="flex-1 h-1 mx-4 bg-white/20">
@@ -104,7 +107,7 @@ export default function Checkout({ isOpen, onClose, cartItems, onComplete }) {
                       <CreditCard size={20} className="text-white" />
                     </div>
                     <span className={`font-medium ${step >= 2 ? 'text-white' : 'text-white/50'}`}>
-                      Payment
+                      {t('checkout.paymentStep')}
                     </span>
                   </div>
                 </div>
@@ -121,78 +124,78 @@ export default function Checkout({ isOpen, onClose, cartItems, onComplete }) {
                       exit={{ opacity: 0, x: 20 }}
                       className="space-y-4"
                     >
-                      <h3 className="text-xl font-bold text-white mb-4">Shipping Information</h3>
+                      <h3 className="text-xl font-bold text-white mb-4">{t('checkout.shippingTitle')}</h3>
                       
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-white/80 text-sm mb-2">Full Name</label>
+                          <label className="block text-white/80 text-sm mb-2">{t('checkout.fullName')}</label>
                           <input
                             type="text"
                             name="fullName"
                             value={formData.fullName}
                             onChange={handleInputChange}
                             className="w-full px-4 py-3 rounded-xl glass text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                            placeholder="John Doe"
+                            placeholder={t('checkout.placeholderName')}
                           />
                         </div>
                         
                         <div>
-                          <label className="block text-white/80 text-sm mb-2">Email</label>
+                          <label className="block text-white/80 text-sm mb-2">{t('checkout.email')}</label>
                           <input
                             type="email"
                             name="email"
                             value={formData.email}
                             onChange={handleInputChange}
                             className="w-full px-4 py-3 rounded-xl glass text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                            placeholder="john@example.com"
+                            placeholder={t('checkout.placeholderEmail')}
                           />
                         </div>
                         
                         <div className="md:col-span-2">
-                          <label className="block text-white/80 text-sm mb-2">Address</label>
+                          <label className="block text-white/80 text-sm mb-2">{t('checkout.address')}</label>
                           <input
                             type="text"
                             name="address"
                             value={formData.address}
                             onChange={handleInputChange}
                             className="w-full px-4 py-3 rounded-xl glass text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                            placeholder="123 Main Street"
+                            placeholder={t('checkout.placeholderAddress')}
                           />
                         </div>
                         
                         <div>
-                          <label className="block text-white/80 text-sm mb-2">City</label>
+                          <label className="block text-white/80 text-sm mb-2">{t('checkout.city')}</label>
                           <input
                             type="text"
                             name="city"
                             value={formData.city}
                             onChange={handleInputChange}
                             className="w-full px-4 py-3 rounded-xl glass text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                            placeholder="New York"
+                            placeholder={t('checkout.placeholderCity')}
                           />
                         </div>
                         
                         <div>
-                          <label className="block text-white/80 text-sm mb-2">Zip Code</label>
+                          <label className="block text-white/80 text-sm mb-2">{t('checkout.zipCode')}</label>
                           <input
                             type="text"
                             name="zipCode"
                             value={formData.zipCode}
                             onChange={handleInputChange}
                             className="w-full px-4 py-3 rounded-xl glass text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                            placeholder="10001"
+                            placeholder={t('checkout.placeholderZip')}
                           />
                         </div>
                         
                         <div className="md:col-span-2">
-                          <label className="block text-white/80 text-sm mb-2">Country</label>
+                          <label className="block text-white/80 text-sm mb-2">{t('checkout.country')}</label>
                           <input
                             type="text"
                             name="country"
                             value={formData.country}
                             onChange={handleInputChange}
                             className="w-full px-4 py-3 rounded-xl glass text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                            placeholder="United States"
+                            placeholder={t('checkout.placeholderCountry')}
                           />
                         </div>
                       </div>
@@ -207,11 +210,11 @@ export default function Checkout({ isOpen, onClose, cartItems, onComplete }) {
                       exit={{ opacity: 0, x: 20 }}
                       className="space-y-4"
                     >
-                      <h3 className="text-xl font-bold text-white mb-4">Payment Information</h3>
+                      <h3 className="text-xl font-bold text-white mb-4">{t('checkout.paymentTitle')}</h3>
                       
                       <div className="space-y-4">
                         <div>
-                          <label className="block text-white/80 text-sm mb-2">Card Number</label>
+                          <label className="block text-white/80 text-sm mb-2">{t('checkout.cardNumber')}</label>
                           <input
                             type="text"
                             name="cardNumber"
@@ -219,45 +222,45 @@ export default function Checkout({ isOpen, onClose, cartItems, onComplete }) {
                             onChange={handleInputChange}
                             maxLength="19"
                             className="w-full px-4 py-3 rounded-xl glass text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                            placeholder="1234 5678 9012 3456"
+                            placeholder={t('checkout.placeholderCardNumber')}
                           />
                         </div>
                         
                         <div>
-                          <label className="block text-white/80 text-sm mb-2">Cardholder Name</label>
+                          <label className="block text-white/80 text-sm mb-2">{t('checkout.cardName')}</label>
                           <input
                             type="text"
                             name="cardName"
                             value={formData.cardName}
                             onChange={handleInputChange}
                             className="w-full px-4 py-3 rounded-xl glass text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                            placeholder="JOHN DOE"
+                            placeholder={t('checkout.placeholderCardName')}
                           />
                         </div>
                         
                         <div className="grid grid-cols-2 gap-4">
                           <div>
-                            <label className="block text-white/80 text-sm mb-2">Expiry Date</label>
+                            <label className="block text-white/80 text-sm mb-2">{t('checkout.expiryDate')}</label>
                             <input
                               type="text"
                               name="expiryDate"
                               value={formData.expiryDate}
                               onChange={handleInputChange}
                               maxLength="5"
-                              placeholder="MM/YY"
+                              placeholder={t('checkout.placeholderExpiry')}
                               className="w-full px-4 py-3 rounded-xl glass text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                             />
                           </div>
                           
                           <div>
-                            <label className="block text-white/80 text-sm mb-2">CVV</label>
+                            <label className="block text-white/80 text-sm mb-2">{t('checkout.cvv')}</label>
                             <input
                               type="text"
                               name="cvv"
                               value={formData.cvv}
                               onChange={handleInputChange}
                               maxLength="3"
-                              placeholder="123"
+                              placeholder={t('checkout.placeholderCvv')}
                               className="w-full px-4 py-3 rounded-xl glass text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                             />
                           </div>
@@ -266,16 +269,19 @@ export default function Checkout({ isOpen, onClose, cartItems, onComplete }) {
 
                       {/* Order Summary */}
                       <div className="mt-6 p-4 rounded-xl glass">
-                        <h4 className="text-white font-semibold mb-3">Order Summary</h4>
+                        <h4 className="text-white font-semibold mb-3">{t('checkout.orderSummary')}</h4>
                         <div className="space-y-2 text-sm">
-                          {cartItems.map((item) => (
-                            <div key={item.id} className="flex justify-between text-white/80">
-                              <span>{item.name} x{item.quantity}</span>
-                              <span>${(item.price * item.quantity).toFixed(2)}</span>
-                            </div>
-                          ))}
+                          {cartItems.map((item) => {
+                            const name = item.nameKey ? t(item.nameKey) : item.name
+                            return (
+                              <div key={item.id} className="flex justify-between text-white/80 gap-4">
+                                <span className="truncate">{name} x{item.quantity}</span>
+                                <span className="flex-shrink-0">${(item.price * item.quantity).toFixed(2)}</span>
+                              </div>
+                            )
+                          })}
                           <div className="pt-2 border-t border-white/20 flex justify-between text-white font-bold text-lg">
-                            <span>Total</span>
+                            <span>{t('checkout.total')}</span>
                             <span>${total.toFixed(2)}</span>
                           </div>
                         </div>
@@ -294,8 +300,8 @@ export default function Checkout({ isOpen, onClose, cartItems, onComplete }) {
                     onClick={handleBack}
                     className="px-6 py-3 rounded-xl glass text-white hover:bg-white/20 transition-colors flex items-center gap-2"
                   >
-                    <ArrowLeft size={20} />
-                    Back
+                    {isRTL ? <ArrowRight size={20} /> : <ArrowLeft size={20} />}
+                    {t('checkout.back')}
                   </motion.button>
                 )}
                 
@@ -314,12 +320,12 @@ export default function Checkout({ isOpen, onClose, cartItems, onComplete }) {
                 >
                   {step === 1 ? (
                     <>
-                      Continue
-                      <ArrowRight size={20} />
+                      {t('checkout.continue')}
+                      {isRTL ? <ArrowLeft size={20} /> : <ArrowRight size={20} />}
                     </>
                   ) : (
                     <>
-                      Complete Order
+                      {t('checkout.completeOrder')}
                       <CheckCircle size={20} />
                     </>
                   )}

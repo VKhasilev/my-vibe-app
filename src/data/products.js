@@ -1,94 +1,102 @@
-export const categories = ['All', 'Electronics', 'Lifestyle', 'Fashion']
-
 export const products = [
   {
     id: '1',
-    name: 'Quantum Wireless Earbuds Pro',
+    nameKey: 'products.p1.name',
     price: 249.99,
-    category: 'Electronics',
+    categoryId: 'electronic-cigarettes',
+    subcategoryId: 'starter-kits',
     image: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=400&h=400&fit=crop',
-    description: 'Premium wireless earbuds with active noise cancellation, 30-hour battery life, and crystal-clear audio quality. Perfect for music lovers and professionals on the go.',
-    features: ['Active Noise Cancellation', '30h Battery Life', 'Water Resistant', 'Wireless Charging']
+    descriptionKey: 'products.p1.description',
+    featureKeys: 'products.p1.features'
   },
   {
     id: '2',
-    name: 'Minimalist Smartwatch',
+    nameKey: 'products.p2.name',
     price: 399.99,
-    category: 'Electronics',
+    categoryId: 'electronic-cigarettes',
+    subcategoryId: 'starter-kits',
     image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=400&fit=crop',
-    description: 'Sleek smartwatch with health tracking, GPS, and premium materials. Track your fitness goals while maintaining an elegant aesthetic.',
-    features: ['Health Tracking', 'GPS Enabled', '7-Day Battery', 'Premium Materials']
+    descriptionKey: 'products.p2.description',
+    featureKeys: 'products.p2.features'
   },
   {
     id: '3',
-    name: 'Zen Meditation Cushion Set',
+    nameKey: 'products.p3.name',
     price: 89.99,
-    category: 'Lifestyle',
+    categoryId: 'coils-pods',
+    subcategoryId: 'replacement-coils',
     image: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400&h=400&fit=crop',
-    description: 'Handcrafted meditation cushions made from organic materials. Enhance your mindfulness practice with comfort and style.',
-    features: ['Organic Materials', 'Ergonomic Design', 'Washable Cover', 'Set of 2']
+    descriptionKey: 'products.p3.description',
+    featureKeys: 'products.p3.features'
   },
   {
     id: '4',
-    name: 'Premium Leather Backpack',
+    nameKey: 'products.p4.name',
     price: 329.99,
-    category: 'Fashion',
+    categoryId: 'tanks',
+    subcategoryId: 'sub-ohm-tanks',
     image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop',
-    description: 'Handcrafted Italian leather backpack with modern design. Spacious compartments and premium hardware for the discerning professional.',
-    features: ['Italian Leather', 'Laptop Compartment', 'Lifetime Warranty', 'Water Resistant']
+    descriptionKey: 'products.p4.description',
+    featureKeys: 'products.p4.features'
   },
   {
     id: '5',
-    name: 'Ultra-Thin Laptop Stand',
+    nameKey: 'products.p5.name',
     price: 79.99,
-    category: 'Electronics',
+    categoryId: 'accessories',
+    subcategoryId: 'chargers',
     image: 'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400&h=400&fit=crop',
-    description: 'Aluminum laptop stand with adjustable height and ergonomic design. Improve your workspace setup and reduce neck strain.',
-    features: ['Adjustable Height', 'Aluminum Build', 'Portable Design', 'Ergonomic']
+    descriptionKey: 'products.p5.description',
+    featureKeys: 'products.p5.features'
   },
   {
     id: '6',
-    name: 'Artisan Coffee Maker',
+    nameKey: 'products.p6.name',
     price: 199.99,
-    category: 'Lifestyle',
+    categoryId: 'flavors',
+    subcategoryId: 'premium-flavors',
     image: 'https://images.unsplash.com/photo-1517487881594-2787fef5ebf7?w=400&h=400&fit=crop',
-    description: 'Professional-grade coffee maker for the perfect brew every morning. Precision temperature control and elegant design.',
-    features: ['Precision Control', 'Quick Brew', 'Easy Clean', 'Premium Design']
+    descriptionKey: 'products.p6.description',
+    featureKeys: 'products.p6.features'
   },
   {
     id: '7',
-    name: 'Designer Sunglasses',
+    nameKey: 'products.p7.name',
     price: 179.99,
-    category: 'Fashion',
+    categoryId: 'tobacco-substitutes',
+    subcategoryId: 'nicotine-salts',
     image: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=400&h=400&fit=crop',
-    description: 'Stylish sunglasses with UV400 protection and polarized lenses. Make a statement while protecting your eyes.',
-    features: ['UV400 Protection', 'Polarized Lenses', 'Lightweight Frame', 'Case Included']
+    descriptionKey: 'products.p7.description',
+    featureKeys: 'products.p7.features'
   },
   {
     id: '8',
-    name: 'Wireless Charging Pad',
+    nameKey: 'products.p8.name',
     price: 49.99,
-    category: 'Electronics',
+    categoryId: 'diy-flavors-components',
+    subcategoryId: 'base-liquids',
     image: 'https://images.unsplash.com/photo-1580910051074-3eb694886505?w=400&h=400&fit=crop',
-    description: 'Fast wireless charging pad compatible with all Qi-enabled devices. Sleek design with LED indicator.',
-    features: ['Fast Charging', 'Qi Compatible', 'LED Indicator', 'Sleek Design']
+    descriptionKey: 'products.p8.description',
+    featureKeys: 'products.p8.features'
   },
   {
     id: '9',
-    name: 'Yoga Mat Premium',
+    nameKey: 'products.p9.name',
     price: 69.99,
-    category: 'Lifestyle',
+    categoryId: 'coils-pods',
+    subcategoryId: 'replacement-coils',
     image: 'https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?w=400&h=400&fit=crop',
-    description: 'Eco-friendly yoga mat with superior grip and cushioning. Perfect for all yoga styles and fitness routines.',
-    features: ['Eco-Friendly', 'Superior Grip', 'Extra Thick', 'Carrying Strap']
+    descriptionKey: 'products.p9.description',
+    featureKeys: 'products.p9.features'
   },
   {
     id: '10',
-    name: 'Cashmere Scarf',
+    nameKey: 'products.p10.name',
     price: 149.99,
-    category: 'Fashion',
+    categoryId: 'tanks',
+    subcategoryId: 'sub-ohm-tanks',
     image: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400&h=400&fit=crop',
-    description: 'Luxurious cashmere scarf in timeless design. Soft, warm, and elegant - the perfect accessory for any season.',
-    features: ['100% Cashmere', 'Handcrafted', 'Timeless Design', 'Gift Box']
+    descriptionKey: 'products.p10.description',
+    featureKeys: 'products.p10.features'
   }
 ]

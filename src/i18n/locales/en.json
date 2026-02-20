@@ -1,0 +1,154 @@
+{
+  "app": {
+    "brand": "VibeShop",
+    "tagline": "Premium E-commerce",
+    "heroTitle": "Discover Premium Products",
+    "heroSubtitle": "Curated collection of the finest items",
+    "profileAria": "User profile",
+    "cartAria": "Shopping cart",
+    "currencyEach": "{{price}} each"
+  },
+  "language": {
+    "label": "Language",
+    "en": "English",
+    "he": "Hebrew"
+  },
+  "categories": {
+    "all": "All",
+    "diyFlavorsComponents": "DIY Flavors & Components",
+    "electronicCigarettes": "Electronic Cigarettes",
+    "coilsPods": "Coils & Pods",
+    "tanks": "Tanks",
+    "accessories": "Accessories",
+    "flavors": "Flavors",
+    "tobaccoSubstitutes": "Tobacco Substitutes",
+    "subcategories": {
+      "baseLiquids": "Base Liquids",
+      "starterKits": "Starter Kits",
+      "replacementCoils": "Replacement Coils",
+      "subOhmTanks": "Sub-Ohm Tanks",
+      "chargers": "Chargers",
+      "premiumFlavors": "Premium Flavors",
+      "nicotineSalts": "Nicotine Salts"
+    }
+  },
+  "cart": {
+    "title": "Cart",
+    "closeAria": "Close cart",
+    "emptyTitle": "Your cart is empty",
+    "emptySubtitle": "Add some products to get started",
+    "decreaseQtyAria": "Decrease quantity",
+    "increaseQtyAria": "Increase quantity",
+    "removeItemAria": "Remove item",
+    "totalLabel": "Total:",
+    "checkoutCta": "Proceed to Checkout"
+  },
+  "product": {
+    "addToCart": "Add to Cart",
+    "addToCartAria": "Add to cart",
+    "addedToCart": "Added to Cart!",
+    "featuresTitle": "Features:",
+    "priceLabel": "Price",
+    "closeModalAria": "Close modal"
+  },
+  "checkout": {
+    "title": "Checkout",
+    "closeAria": "Close checkout",
+    "shippingStep": "Shipping",
+    "paymentStep": "Payment",
+    "shippingTitle": "Shipping Information",
+    "paymentTitle": "Payment Information",
+    "fullName": "Full Name",
+    "email": "Email",
+    "address": "Address",
+    "city": "City",
+    "zipCode": "Zip Code",
+    "country": "Country",
+    "cardNumber": "Card Number",
+    "cardName": "Cardholder Name",
+    "expiryDate": "Expiry Date",
+    "cvv": "CVV",
+    "placeholderName": "John Doe",
+    "placeholderEmail": "john@example.com",
+    "placeholderAddress": "123 Main Street",
+    "placeholderCity": "New York",
+    "placeholderZip": "10001",
+    "placeholderCountry": "United States",
+    "placeholderCardNumber": "1234 5678 9012 3456",
+    "placeholderCardName": "JOHN DOE",
+    "placeholderExpiry": "MM/YY",
+    "placeholderCvv": "123",
+    "orderSummary": "Order Summary",
+    "total": "Total",
+    "back": "Back",
+    "continue": "Continue",
+    "completeOrder": "Complete Order",
+    "successAlert": "Order placed successfully! Thank you for shopping with VibeShop."
+  },
+  "age": {
+    "title": "AGE VERIFICATION",
+    "welcome": "Welcome to CIG",
+    "description": "By clicking \"ENTER\" I confirm that I am over the age of 18 and I accept showing products images on the website.",
+    "enter": "ENTER",
+    "exit": "EXIT",
+    "warning": "You must be 18 or older to access this website"
+  },
+  "exit": {
+    "title": "Age Restriction",
+    "message": "This website contains products that are restricted to users 18 years of age or older.",
+    "return": "Return to Age Verification"
+  },
+  "products": {
+    "p1": {
+      "name": "Quantum Wireless Earbuds Pro",
+      "description": "Premium wireless earbuds with active noise cancellation, 30-hour battery life, and crystal-clear audio quality. Perfect for music lovers and professionals on the go.",
+      "features": ["Active Noise Cancellation", "30h Battery Life", "Water Resistant", "Wireless Charging"]
+    },
+    "p2": {
+      "name": "Minimalist Smartwatch",
+      "description": "Sleek smartwatch with health tracking, GPS, and premium materials. Track your fitness goals while maintaining an elegant aesthetic.",
+      "features": ["Health Tracking", "GPS Enabled", "7-Day Battery", "Premium Materials"]
+    },
+    "p3": {
+      "name": "Zen Meditation Cushion Set",
+      "description": "Handcrafted meditation cushions made from organic materials. Enhance your mindfulness practice with comfort and style.",
+      "features": ["Organic Materials", "Ergonomic Design", "Washable Cover", "Set of 2"]
+    },
+    "p4": {
+      "name": "Premium Leather Backpack",
+      "description": "Handcrafted Italian leather backpack with modern design. Spacious compartments and premium hardware for the discerning professional.",
+      "features": ["Italian Leather", "Laptop Compartment", "Lifetime Warranty", "Water Resistant"]
+    },
+    "p5": {
+      "name": "Ultra-Thin Laptop Stand",
+      "description": "Aluminum laptop stand with adjustable height and ergonomic design. Improve your workspace setup and reduce neck strain.",
+      "features": ["Adjustable Height", "Aluminum Build", "Portable Design", "Ergonomic"]
+    },
+    "p6": {
+      "name": "Artisan Coffee Maker",
+      "description": "Professional-grade coffee maker for the perfect brew every morning. Precision temperature control and elegant design.",
+      "features": ["Precision Control", "Quick Brew", "Easy Clean", "Premium Design"]
+    },
+    "p7": {
+      "name": "Designer Sunglasses",
+      "description": "Stylish sunglasses with UV400 protection and polarized lenses. Make a statement while protecting your eyes.",
+      "features": ["UV400 Protection", "Polarized Lenses", "Lightweight Frame", "Case Included"]
+    },
+    "p8": {
+      "name": "Wireless Charging Pad",
+      "description": "Fast wireless charging pad compatible with all Qi-enabled devices. Sleek design with LED indicator.",
+      "features": ["Fast Charging", "Qi Compatible", "LED Indicator", "Sleek Design"]
+    },
+    "p9": {
+      "name": "Yoga Mat Premium",
+      "description": "Eco-friendly yoga mat with superior grip and cushioning. Perfect for all yoga styles and fitness routines.",
+      "features": ["Eco-Friendly", "Superior Grip", "Extra Thick", "Carrying Strap"]
+    },
+    "p10": {
+      "name": "Cashmere Scarf",
+      "description": "Luxurious cashmere scarf in timeless design. Soft, warm, and elegant - the perfect accessory for any season.",
+      "features": ["100% Cashmere", "Handcrafted", "Timeless Design", "Gift Box"]
+    }
+  }
+}
+
