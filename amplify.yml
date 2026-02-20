@@ -4,6 +4,8 @@ frontend:
     preBuild:
       commands:
         - npm install
+        - npm install rollup --force
+        - npm install @rollup/rollup-linux-x64-gnu --no-save --legacy-peer-deps || true
     build:
       commands:
         - npm run build
