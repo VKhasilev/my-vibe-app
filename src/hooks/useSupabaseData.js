@@ -13,6 +13,41 @@ const iconMap = {
   Leaf,
 }
 
+// Display order: exactly as provided (DIY → Electronic cigarettes → Coils & Pods → Tanks → Accessories → Flavors → Tobacco substitutes)
+const CATEGORY_ORDER = [
+  'diy-flavors-components',
+  'electronic-cigarettes',
+  'coils-pods',
+  'tanks',
+  'accessories',
+  'flavors',
+  'tobacco-substitutes',
+]
+
+// Subcategory display order per category (ids in order)
+const SUBCATEGORY_ORDER_BY_CATEGORY = {
+  'diy-flavors-components': ['ciggy-flavors', 'lume-flavors', 'aisu-flavors', 'iceix-flavors', 'pg-vg-nicotine', 'bottles', 'syringes'],
+  'electronic-cigarettes': ['pod-kits', 'advanced-kits', 'advanced-mods', 'empty-disposables', 'prefilled-disposables', 'cbd-vaporizers'],
+  'coils-pods': ['aspire-coils', 'bmor-coils', 'ciggy-coils', 'freemax-coils', 'geekvape-coils', 'lost-vape-coils', 'mipod-coils', 'nevoks-coils', 'oxva-coils', 'obs-coils', 'smok-coils', 'vaporesso-coils', 'voopoo-coils', 'justfog-coils'],
+  'tanks': ['sub-ohm-tanks', 'mtl-tanks'],
+  'accessories': ['batteries', 'chargers', 'replacement-glass', 'cotton', 'replacement-drip-tips', 'thread-adapters'],
+  'flavors': ['cig-flavors', 'capella-flavors', 'flavorah-flavors', 'tpa-flavors', 'inawera-flavors', 'flavor-enhancers', 'iff-flavors', 'smoke-flavors', 'flavourart-flavors', 'raw-flavors', 'vampire-vape-flavors', 'riot-squad-flavors'],
+  'tobacco-substitutes': ['neafs-heating-sticks', 'tobacco-heating-devices', 'zylo-nicotine-pouches'],
+}
+
+function sortByOrder(items, orderIds) {
+  const byId = new Map(items.map((item) => [item.id, item]))
+  const result = []
+  for (const id of orderIds) {
+    if (byId.has(id)) result.push(byId.get(id))
+  }
+  // Append any items not in order (e.g. new DB rows) at the end
+  for (const item of items) {
+    if (!orderIds.includes(item.id)) result.push(item)
+  }
+  return result
+}
+
 export function useCategories() {
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true)
@@ -27,7 +62,6 @@ export function useCategories() {
         const { data: rows, error: fetchError } = await supabase
           .from('categories')
           .select('*')
-          .order('name_en', { ascending: true })
 
         if (!isMounted) return
 
@@ -41,7 +75,7 @@ export function useCategories() {
             icon: iconMap[row.icon] || Package,
             titleKey: `categories.${row.id.replace(/-/g, '')}`,
           }))
-          setData(withIcons)
+          setData(sortByOrder(withIcons, CATEGORY_ORDER))
         }
       } catch (err) {
         if (!isMounted) return
@@ -85,7 +119,6 @@ export function useSubcategories(categoryId) {
           .from('subcategories')
           .select('*')
           .eq('category_id', categoryId)
-          .order('name_en', { ascending: true })
 
         if (!isMounted) return
 
@@ -94,7 +127,8 @@ export function useSubcategories(categoryId) {
           setError(fetchError)
           setData([])
         } else {
-          setData(rows)
+          const order = SUBCATEGORY_ORDER_BY_CATEGORY[categoryId]
+          setData(order ? sortByOrder(rows, order) : rows)
         }
       } catch (err) {
         if (!isMounted) return

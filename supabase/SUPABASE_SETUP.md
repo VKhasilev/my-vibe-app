@@ -1,5 +1,7 @@
 # Supabase Integration Setup Guide
 
+DB-related SQL scripts in this folder: **`schema.sql`** (tables, indexes, RLS) and **`seed-categories-subcategories.sql`** (categories + subcategories data).
+
 ## ✅ What's Been Implemented
 
 All Supabase integration has been completed:
@@ -31,22 +33,21 @@ All Supabase integration has been completed:
    VITE_ADMIN_PASSWORD=your-secure-password-here
    ```
 
-### Step 2: Run SQL Schema in Supabase
+### Step 2: Run SQL in Supabase (schema first, then seed)
 
-1. Open your Supabase Dashboard
-2. Navigate to **SQL Editor** (left sidebar)
-3. Click **New query**
-4. Open the file `supabase-schema.sql` in this project
-5. Copy the **entire contents** of `supabase-schema.sql`
-6. Paste into the SQL Editor
-7. Click **Run** (or press Cmd/Ctrl + Enter)
+All DB scripts live in the **`supabase/`** folder.
+
+1. Open your Supabase Dashboard → **SQL Editor** → **New query**
+2. **Run the schema** (tables, indexes, RLS):
+   - Open `supabase/schema.sql`, copy its entire contents, paste in the editor, then **Run**
+3. **Run the seed** (categories and subcategories):
+   - Open `supabase/seed-categories-subcategories.sql`, copy its entire contents, paste in the editor, then **Run**
 
 This will create:
-- `categories` table with initial seed data
+- `categories` and `subcategories` tables (empty until seed runs)
 - `products` table
-- Indexes for performance
-- Row Level Security (RLS) policies
-- Auto-update triggers
+- Indexes, RLS policies, and auto-update triggers
+- All category and subcategory seed data (idempotent; safe to run again)
 
 ### Step 3: Verify Setup
 
@@ -68,6 +69,11 @@ This will create:
 - `icon` (text) - Icon name (e.g., 'Zap', 'Droplet')
 - `slug` (text, unique) - URL-friendly slug
 
+### Subcategories Table
+- `id` (text, primary key)
+- `category_id` (text) - Foreign key to categories.id
+- `name_en`, `name_he`, `slug` - Names and slug per category
+
 ### Products Table
 - `id` (uuid, primary key) - Auto-generated UUID
 - `name_en` (text) - English product name
@@ -77,7 +83,7 @@ This will create:
 - `price` (numeric) - Product price
 - `image_url` (text, nullable) - Product image URL
 - `category_id` (text) - Foreign key to categories.id
-- `subcategory_id` (text, nullable) - Subcategory identifier
+- `subcategory_id` (text, nullable) - Foreign key to subcategories.id
 - `stock_status` (text) - 'in_stock' | 'out_of_stock' | 'preorder'
 - `specs` (jsonb, nullable) - JSON object for product specifications
 - `created_at` (timestamp) - Auto-generated
@@ -112,10 +118,9 @@ The app now uses Supabase as the primary data source. The old static files (`src
 ## 🚀 Next Steps
 
 1. **Add Products**: Use the admin panel or insert directly via Supabase dashboard
-2. **Customize Categories**: Edit categories in Supabase dashboard or via SQL
-3. **Add Subcategories**: Update the categories table to include subcategory arrays (or create a separate subcategories table)
-4. **Image Storage**: Consider using Supabase Storage for product images instead of external URLs
-5. **Authentication**: Replace simple password check with Supabase Auth for better security
+2. **Customize Categories/Subcategories**: Edit in Supabase dashboard or re-run/amend `seed-categories-subcategories.sql`
+3. **Image Storage**: Consider using Supabase Storage for product images instead of external URLs
+4. **Authentication**: Replace simple password check with Supabase Auth for better security
 
 ## 🐛 Troubleshooting
 
@@ -129,6 +134,6 @@ The app now uses Supabase as the primary data source. The old static files (`src
 - Ensure products exist in your Supabase database
 
 **Categories not loading**
-- Verify the SQL schema ran successfully
-- Check that categories table has data (should have 7 seeded categories)
+- Run `supabase/schema.sql` first, then `supabase/seed-categories-subcategories.sql`
+- Check that categories table has data (7 seeded categories)
 - Check browser console for fetch errors
