@@ -58,7 +58,8 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantit
               ) : (
                 <div className="space-y-4">
                   {cartItems.map((item) => {
-                    const name = item.nameKey ? t(item.nameKey) : item.name
+                    const name = item.name_en || item.name_he || item.name || 'Product'
+                    const imageUrl = item.image || item.image_url
 
                     return (
                       <motion.div
@@ -68,16 +69,16 @@ export default function CartDrawer({ isOpen, onClose, cartItems, onUpdateQuantit
                         className="glass rounded-2xl p-4"
                       >
                         <div className="flex gap-4">
-                          <div className="w-20 h-20 rounded-xl bg-gradient-to-br from-indigo-500/20 to-purple-500/20 overflow-hidden flex-shrink-0">
-                            <img
-                              src={item.image}
-                              alt={name}
-                              className="w-full h-full object-cover"
-                              onError={(e) => {
-                                e.target.src = `https://via.placeholder.com/80x80/6366f1/ffffff?text=${encodeURIComponent(name.substring(0, 2))}`
-                              }}
-                            />
-                          </div>
+                        <div className="w-20 h-20 rounded-xl bg-gradient-to-br from-indigo-500/20 to-purple-500/20 overflow-hidden flex-shrink-0">
+                          <img
+                            src={imageUrl}
+                            alt={name}
+                            className="w-full h-full object-cover"
+                            onError={(e) => {
+                              e.target.src = `https://via.placeholder.com/80x80/6366f1/ffffff?text=${encodeURIComponent(name.substring(0, 2))}`
+                            }}
+                          />
+                        </div>
 
                           <div className="flex-1 min-w-0">
                             <h3 className="text-white font-semibold mb-1 truncate">

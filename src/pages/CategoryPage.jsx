@@ -3,8 +3,8 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import ProductCatalog from '../components/ProductCatalog'
 import CategoryNav from '../components/CategoryNav'
-import { products } from '../data/products'
-import { getCategoryById, getSubcategoryByIds } from '../data/categories.js'
+import ProductGridSkeleton from '../components/ProductGridSkeleton'
+import { useProducts, useCategories, useSubcategories } from '../hooks/useSupabaseData'
 import { ChevronRight, ChevronLeft } from 'lucide-react'
 
 export default function CategoryPage({ onAddToCart, onProductClick }) {
@@ -12,28 +12,19 @@ export default function CategoryPage({ onAddToCart, onProductClick }) {
   const { t, i18n } = useTranslation()
   const navigate = useNavigate()
   const isRTL = i18n.dir() === 'rtl'
+  const { products: filteredProducts, loading } = useProducts({ categoryId, subcategoryId })
+  const { categories } = useCategories()
+  const { subcategories } = useSubcategories(categoryId)
 
-  const category = categoryId ? getCategoryById(categoryId) : null
-  const subcategory = categoryId && subcategoryId 
-    ? getSubcategoryByIds(categoryId, subcategoryId) 
+  const category = categoryId ? categories.find(cat => cat.id === categoryId) : null
+  const categoryName = category 
+    ? (i18n.language === 'he' ? category.name_he : category.name_en)
     : null
-
-  // Filter products by category/subcategory
-  let filteredProducts = products
-
-  if (categoryId) {
-    filteredProducts = products.filter(product => {
-      // Match main category
-      if (product.categoryId === categoryId) {
-        // If subcategory is specified, filter by it
-        if (subcategoryId) {
-          return product.subcategoryId === subcategoryId
-        }
-        return true
-      }
-      return false
-    })
-  }
+  
+  const subcategory = subcategoryId ? subcategories.find(sub => sub.id === subcategoryId) : null
+  const subcategoryName = subcategory
+    ? (i18n.language === 'he' ? subcategory.name_he : subcategory.name_en)
+    : null
 
   const ChevronIcon = isRTL ? ChevronLeft : ChevronRight
 
@@ -56,7 +47,7 @@ export default function CategoryPage({ onAddToCart, onProductClick }) {
             <>
               <ChevronIcon size={16} />
               <span className="text-white font-semibold">
-                {t(category.titleKey)}
+                {categoryName}
               </span>
             </>
           )}
@@ -64,7 +55,7 @@ export default function CategoryPage({ onAddToCart, onProductClick }) {
             <>
               <ChevronIcon size={16} />
               <span className="text-white font-semibold">
-                {t(subcategory.titleKey)}
+                {subcategoryName}
               </span>
             </>
           )}
@@ -78,21 +69,18 @@ export default function CategoryPage({ onAddToCart, onProductClick }) {
         className="mb-8"
       >
         <h2 className="text-4xl font-bold text-white mb-2">
-          {subcategory 
-            ? t(subcategory.titleKey)
-            : category 
-            ? t(category.titleKey)
-            : t('app.heroTitle')
-          }
+          {subcategoryName || categoryName || t('app.heroTitle')}
         </h2>
         <p className="text-slate-300">
-          {filteredProducts.length} {filteredProducts.length === 1 ? 'product' : 'products'}
+          {loading ? '...' : `${filteredProducts.length} ${filteredProducts.length === 1 ? 'product' : 'products'}`}
         </p>
       </motion.div>
 
       <CategoryNav />
 
-      {filteredProducts.length > 0 ? (
+      {loading ? (
+        <ProductGridSkeleton />
+      ) : filteredProducts.length > 0 ? (
         <ProductCatalog
           products={filteredProducts}
           onAddToCart={onAddToCart}

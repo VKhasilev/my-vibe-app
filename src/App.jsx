@@ -12,6 +12,7 @@ import LanguageSwitcher from './components/LanguageSwitcher'
 import Sidebar from './components/Sidebar'
 import HomePage from './pages/HomePage'
 import CategoryPage from './pages/CategoryPage'
+import AdminAddProductPage from './pages/AdminAddProductPage'
 import { useTranslation } from 'react-i18next'
 
 function App() {
@@ -184,6 +185,10 @@ function App() {
                     onProductClick={handleProductClick}
                   />
                 } 
+              />
+              <Route 
+                path="/admin/add-product" 
+                element={<AdminAddProductPage />} 
               />
             </Routes>
           </div>

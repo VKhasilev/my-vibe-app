@@ -1,12 +1,16 @@
 import { motion } from 'framer-motion'
 import { ShoppingCart } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
-import { getCategoryById } from '../data/categories.js'
+import { useCategories } from '../hooks/useSupabaseData'
 
 export default function ProductCard({ product, onAddToCart, onProductClick }) {
-  const { t } = useTranslation()
-  const name = t(product.nameKey)
-  const category = product.categoryId ? getCategoryById(product.categoryId) : null
+  const { t, i18n } = useTranslation()
+  const { categories } = useCategories()
+  const name = i18n.language === 'he' ? (product.name_he || product.name_en) : (product.name_en || product.name_he)
+  const category = product.categoryId ? categories.find(cat => cat.id === product.categoryId) : null
+  const categoryName = category 
+    ? (i18n.language === 'he' ? category.name_he : category.name_en)
+    : null
 
   return (
     <motion.div
@@ -18,21 +22,21 @@ export default function ProductCard({ product, onAddToCart, onProductClick }) {
     >
       <div className="relative h-64 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 overflow-hidden">
         <img
-          src={product.image}
+          src={product.image || product.image_url}
           alt={name}
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
           onError={(e) => {
-            e.target.src = `https://via.placeholder.com/400x400/6366f1/ffffff?text=${encodeURIComponent(name)}`
+            e.target.src = `https://via.placeholder.com/400x400/6366f1/ffffff?text=${encodeURIComponent(name.substring(0, 10))}`
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
       </div>
       
       <div className="p-6">
-        {category && (
+        {categoryName && (
           <div className="mb-2">
             <span className="text-xs font-semibold text-indigo-300 uppercase tracking-wide">
-              {t(category.titleKey)}
+              {categoryName}
             </span>
           </div>
         )}

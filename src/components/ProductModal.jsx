@@ -2,19 +2,30 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { X, ShoppingCart, Check } from 'lucide-react'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { getCategoryById } from '../data/categories.js'
+import { useCategories } from '../hooks/useSupabaseData'
 
 export default function ProductModal({ product, isOpen, onClose, onAddToCart }) {
   const [addedToCart, setAddedToCart] = useState(false)
   const { t, i18n } = useTranslation()
+  const { categories } = useCategories()
 
   if (!product) return null
 
   const isRTL = i18n.dir() === 'rtl'
-  const name = t(product.nameKey)
-  const description = t(product.descriptionKey)
-  const features = t(product.featureKeys, { returnObjects: true })
-  const category = product.categoryId ? getCategoryById(product.categoryId) : null
+  const name = i18n.language === 'he' ? (product.name_he || product.name_en) : (product.name_en || product.name_he)
+  const description = i18n.language === 'he' 
+    ? (product.description_he || product.description_en || '')
+    : (product.description_en || product.description_he || '')
+  const category = product.categoryId ? categories.find(cat => cat.id === product.categoryId) : null
+  const categoryName = category 
+    ? (i18n.language === 'he' ? category.name_he : category.name_en)
+    : null
+  
+  // Parse features from specs JSON if available
+  let features = []
+  if (product.specs && typeof product.specs === 'object') {
+    features = Object.entries(product.specs).map(([key, value]) => `${key}: ${value}`)
+  }
 
   const handleAddToCart = () => {
     onAddToCart(product)
@@ -50,11 +61,11 @@ export default function ProductModal({ product, isOpen, onClose, onAddToCart }) 
                 {/* Image Section */}
                 <div className="relative h-96 md:h-full min-h-[400px] bg-gradient-to-br from-indigo-500/20 to-purple-500/20">
                   <img
-                    src={product.image}
+                    src={product.image || product.image_url}
                     alt={name}
                     className="w-full h-full object-cover"
                     onError={(e) => {
-                      e.target.src = `https://via.placeholder.com/600x600/6366f1/ffffff?text=${encodeURIComponent(name)}`
+                      e.target.src = `https://via.placeholder.com/600x600/6366f1/ffffff?text=${encodeURIComponent(name.substring(0, 15))}`
                     }}
                   />
                   <button
@@ -68,10 +79,10 @@ export default function ProductModal({ product, isOpen, onClose, onAddToCart }) 
 
                 {/* Content Section */}
                 <div className="p-8 flex flex-col">
-                  {category && (
+                  {categoryName && (
                     <div className="mb-4">
                       <span className="text-sm font-semibold text-indigo-300 uppercase tracking-wide">
-                        {t(category.titleKey)}
+                        {categoryName}
                       </span>
                     </div>
                   )}
@@ -84,8 +95,8 @@ export default function ProductModal({ product, isOpen, onClose, onAddToCart }) 
                     {description}
                   </p>
 
-                  {/* Features */}
-                  {Array.isArray(features) && features.length > 0 && (
+                  {/* Features/Specs */}
+                  {features.length > 0 && (
                     <div className="mb-6">
                       <h3 className="text-white font-semibold mb-3">{t('product.featuresTitle')}</h3>
                       <ul className="space-y-2">

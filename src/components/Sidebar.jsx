@@ -1,13 +1,22 @@
 import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import { useNavigate, useLocation } from 'react-router-dom'
-import { categories } from '../data/categories.js'
+import { useCategories, useSubcategories } from '../hooks/useSupabaseData'
 
 export default function Sidebar() {
   const { t, i18n } = useTranslation()
   const navigate = useNavigate()
   const location = useLocation()
   const isRTL = i18n.dir() === 'rtl'
+  const { categories, loading } = useCategories()
+  
+  // Get active category ID for subcategories
+  const activeCategoryId = categories.find(cat => 
+    location.pathname === `/category/${cat.id}` || 
+    location.pathname.startsWith(`/category/${cat.id}/`)
+  )?.id
+  
+  const { subcategories: activeSubcategories } = useSubcategories(activeCategoryId)
 
   const isActive = (categoryId) => {
     return location.pathname === `/category/${categoryId}` || 
@@ -49,56 +58,66 @@ export default function Sidebar() {
         </motion.button>
 
         {/* Categories */}
-        {categories.map((category) => {
-          const Icon = category.icon
-          const active = isActive(category.id)
-          
-          return (
-            <div key={category.id} className="space-y-1">
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                onClick={() => handleCategoryClick(category.id)}
-                className={`w-full flex items-center gap-3 px-4 py-3 rounded-2xl transition-all text-left ${
-                  active
-                    ? 'glass-strong bg-white/30 text-white'
-                    : 'text-slate-300 hover:bg-white/10'
-                }`}
-              >
-                <Icon size={20} />
-                <span className="font-medium truncate">{t(category.titleKey)}</span>
-              </motion.button>
-
-              {/* Subcategories */}
-              {active && category.subcategories.length > 0 && (
-                <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: 'auto' }}
-                  className="ml-8 space-y-1"
+        {loading ? (
+          <div className="space-y-2">
+            {[1, 2, 3, 4].map((i) => (
+              <div key={i} className="h-12 bg-white/10 rounded-2xl animate-pulse" />
+            ))}
+          </div>
+        ) : (
+          categories.map((category) => {
+            const Icon = category.icon
+            const active = isActive(category.id)
+            const categoryName = i18n.language === 'he' ? category.name_he : category.name_en
+            
+            return (
+              <div key={category.id} className="space-y-1">
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => handleCategoryClick(category.id)}
+                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-2xl transition-all text-left ${
+                    active
+                      ? 'glass-strong bg-white/30 text-white'
+                      : 'text-slate-300 hover:bg-white/10'
+                  }`}
                 >
-                  {category.subcategories.map((subcategory) => {
-                    const subActive = location.pathname === `/category/${category.id}/${subcategory.id}`
-                    return (
-                      <motion.button
-                        key={subcategory.id}
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        onClick={() => handleSubcategoryClick(category.id, subcategory.id)}
-                        className={`w-full px-4 py-2 rounded-xl transition-all text-left text-sm ${
-                          subActive
-                            ? 'bg-white/20 text-white'
-                            : 'text-slate-400 hover:bg-white/10 hover:text-white'
-                        }`}
-                      >
-                        {t(subcategory.titleKey)}
-                      </motion.button>
-                    )
-                  })}
-                </motion.div>
-              )}
-            </div>
-          )
-        })}
+                  <Icon size={20} />
+                  <span className="font-medium truncate">{categoryName}</span>
+                </motion.button>
+
+                {/* Subcategories */}
+                {active && category.id === activeCategoryId && activeSubcategories.length > 0 && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    className="ml-8 space-y-1"
+                  >
+                    {activeSubcategories.map((subcategory) => {
+                      const subActive = location.pathname === `/category/${category.id}/${subcategory.id}`
+                      const subcategoryName = i18n.language === 'he' ? subcategory.name_he : subcategory.name_en
+                      return (
+                        <motion.button
+                          key={subcategory.id}
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
+                          onClick={() => handleSubcategoryClick(category.id, subcategory.id)}
+                          className={`w-full px-4 py-2 rounded-xl transition-all text-left text-sm ${
+                            subActive
+                              ? 'bg-white/20 text-white'
+                              : 'text-slate-400 hover:bg-white/10 hover:text-white'
+                          }`}
+                        >
+                          {subcategoryName}
+                        </motion.button>
+                      )
+                    })}
+                  </motion.div>
+                )}
+              </div>
+            )
+          })
+        )}
       </nav>
     </motion.aside>
   )

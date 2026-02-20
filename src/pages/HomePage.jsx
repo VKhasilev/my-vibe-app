@@ -2,10 +2,12 @@ import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import ProductCatalog from '../components/ProductCatalog'
 import CategoryNav from '../components/CategoryNav'
-import { products } from '../data/products'
+import ProductGridSkeleton from '../components/ProductGridSkeleton'
+import { useProducts } from '../hooks/useSupabaseData'
 
 export default function HomePage({ onAddToCart, onProductClick }) {
   const { t } = useTranslation()
+  const { products, loading } = useProducts()
 
   return (
     <>
@@ -20,11 +22,15 @@ export default function HomePage({ onAddToCart, onProductClick }) {
 
       <CategoryNav />
 
-      <ProductCatalog
-        products={products}
-        onAddToCart={onAddToCart}
-        onProductClick={onProductClick}
-      />
+      {loading ? (
+        <ProductGridSkeleton />
+      ) : (
+        <ProductCatalog
+          products={products}
+          onAddToCart={onAddToCart}
+          onProductClick={onProductClick}
+        />
+      )}
     </>
   )
 }

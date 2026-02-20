@@ -272,7 +272,7 @@ export default function Checkout({ isOpen, onClose, cartItems, onComplete }) {
                         <h4 className="text-white font-semibold mb-3">{t('checkout.orderSummary')}</h4>
                         <div className="space-y-2 text-sm">
                           {cartItems.map((item) => {
-                            const name = item.nameKey ? t(item.nameKey) : item.name
+                            const name = item.name_en || item.name_he || item.name || 'Product'
                             return (
                               <div key={item.id} className="flex justify-between text-white/80 gap-4">
                                 <span className="truncate">{name} x{item.quantity}</span>

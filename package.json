@@ -10,6 +10,7 @@
     "postinstall": "node scripts/postinstall.js || true"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.97.0",
     "framer-motion": "^10.16.16",
     "i18next": "^25.8.11",
     "i18next-browser-languagedetector": "^8.2.1",
