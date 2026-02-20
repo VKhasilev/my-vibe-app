@@ -1,0 +1,12 @@
+{
+  "baseUrl": "https://www.cig.co.il",
+  "outputDir": "scripts/crawl/tobacco-substitutes",
+  "categories": [
+    { "url": "https://www.cig.co.il/tobacco-substitutes/nicotine-pouches.html", "category_id": "tobacco-substitutes", "subcategory_id": "zylo-nicotine-pouches" },
+    { "url": "https://www.cig.co.il/tobacco-substitutes/hnb-devices.html", "category_id": "tobacco-substitutes", "subcategory_id": "tobacco-heating-devices" },
+    { "url": "https://www.cig.co.il/tobacco-substitutes/sticks.html", "category_id": "tobacco-substitutes", "subcategory_id": "neafs-heating-sticks" }
+  ],
+  "keepOriginalImageUrl": true,
+  "maxProducts": 2000,
+  "delayMs": 600
+}

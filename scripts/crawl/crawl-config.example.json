@@ -1,0 +1,17 @@
+{
+  "baseUrl": "https://www.cig.co.il",
+  "outputDir": "scripts/crawl/output",
+  "categories": [
+    { "url": "https://www.cig.co.il/diy.html", "category_id": "diy-flavors-components", "subcategory_id": null },
+    { "url": "https://www.cig.co.il/diy/ciggy-flavor-shots.html", "category_id": "diy-flavors-components", "subcategory_id": "ciggy-flavors" },
+    { "url": "https://www.cig.co.il/diy/lume-flavor-shots.html", "category_id": "diy-flavors-components", "subcategory_id": "lume-flavors" },
+    { "url": "https://www.cig.co.il/diy/aisu-flavor-shots.html", "category_id": "diy-flavors-components", "subcategory_id": "aisu-flavors" },
+    { "url": "https://www.cig.co.il/diy/iceix-flavor-shots.html", "category_id": "diy-flavors-components", "subcategory_id": "iceix-flavors" },
+    { "url": "https://www.cig.co.il/diy/components.html", "category_id": "diy-flavors-components", "subcategory_id": "pg-vg-nicotine" },
+    { "url": "https://www.cig.co.il/diy/bottles.html", "category_id": "diy-flavors-components", "subcategory_id": "bottles" },
+    { "url": "https://www.cig.co.il/diy/syringes-and-pipettes.html", "category_id": "diy-flavors-components", "subcategory_id": "syringes" }
+  ],
+  "keepOriginalImageUrl": true,
+  "maxProducts": 2000,
+  "delayMs": 600
+}

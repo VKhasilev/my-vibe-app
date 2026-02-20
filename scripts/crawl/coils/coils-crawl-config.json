@@ -1,0 +1,23 @@
+{
+  "baseUrl": "https://www.cig.co.il",
+  "outputDir": "scripts/crawl/coils",
+  "categories": [
+    { "url": "https://www.cig.co.il/replacement-coils/justfog-coils.html", "category_id": "coils-pods", "subcategory_id": "justfog-coils" },
+    { "url": "https://www.cig.co.il/replacement-coils/voopoo-coils.html", "category_id": "coils-pods", "subcategory_id": "voopoo-coils" },
+    { "url": "https://www.cig.co.il/replacement-coils/vaporesso-coils.html", "category_id": "coils-pods", "subcategory_id": "vaporesso-coils" },
+    { "url": "https://www.cig.co.il/replacement-coils/smoktech-coils.html", "category_id": "coils-pods", "subcategory_id": "smok-coils" },
+    { "url": "https://www.cig.co.il/replacement-coils/obs-coils-he.html", "category_id": "coils-pods", "subcategory_id": "obs-coils" },
+    { "url": "https://www.cig.co.il/replacement-coils/oxva.html", "category_id": "coils-pods", "subcategory_id": "oxva-coils" },
+    { "url": "https://www.cig.co.il/replacement-coils/nevoks-coils-pods.html", "category_id": "coils-pods", "subcategory_id": "nevoks-coils" },
+    { "url": "https://www.cig.co.il/replacement-coils/mi-pod-cartridge.html", "category_id": "coils-pods", "subcategory_id": "mipod-coils" },
+    { "url": "https://www.cig.co.il/replacement-coils/lost-vape-coils.html", "category_id": "coils-pods", "subcategory_id": "lost-vape-coils" },
+    { "url": "https://www.cig.co.il/replacement-coils/geekvape-coils.html", "category_id": "coils-pods", "subcategory_id": "geekvape-coils" },
+    { "url": "https://www.cig.co.il/replacement-coils/freemax-coils.html", "category_id": "coils-pods", "subcategory_id": "freemax-coils" },
+    { "url": "https://www.cig.co.il/replacement-coils/cig.html", "category_id": "coils-pods", "subcategory_id": "ciggy-coils" },
+    { "url": "https://www.cig.co.il/replacement-coils/bmor-coils.html", "category_id": "coils-pods", "subcategory_id": "bmor-coils" },
+    { "url": "https://www.cig.co.il/replacement-coils/aspire-coils.html", "category_id": "coils-pods", "subcategory_id": "aspire-coils" }
+  ],
+  "keepOriginalImageUrl": true,
+  "maxProducts": 2000,
+  "delayMs": 600
+}

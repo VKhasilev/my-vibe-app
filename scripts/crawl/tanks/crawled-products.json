@@ -1,0 +1,28 @@
+[
+  {
+    "slug": "aspire-nautilus-gt-ii-tank-4-5-ml",
+    "name_en": "Aspire Nautilus GT II Tank (4.5 ml)",
+    "name_he": "Aspire Nautilus GT II Tank (4.5 ml)",
+    "description_en": "Aspire Nautilus GT II 4 5 ml Tank The Aspire Nautilus GT II tank is the upgraded successor to the popular Nautilus GT delivering enhanced performance superior airflow control and outstanding flavor reproduction This premium tank combines style durability and functionality — perfect for both MTL",
+    "description_he": null,
+    "price": 140,
+    "image_url": "https://www.cig.co.il/images/detailed/20/Nautilus_GT_II_-_black_4.5_ml.webp",
+    "stock_status": "in_stock",
+    "specs": null,
+    "category_id": "tanks",
+    "subcategory_id": "mtl-tanks"
+  },
+  {
+    "slug": "lost-vape-centaurus-sub-ohm-tank",
+    "name_en": "Lost Vape Centaurus Sub Ohm Tank",
+    "name_he": "Lost Vape Centaurus Sub Ohm Tank",
+    "description_en": "Lost Vape Centaurus Tank features a stylish design with a diameter of 26mm and it has a 510 thread that can be connected with most of the mods to realize DL vaping The knurled design of the top cap enhances grip and allows you to more easily open the quarter turn to reveal the large fill port Coupled with",
+    "description_he": null,
+    "price": 120,
+    "image_url": "https://www.cig.co.il/images/detailed/18/lost-vape-centaurus-sub-ohm-tank-black.webp",
+    "stock_status": "in_stock",
+    "specs": null,
+    "category_id": "tanks",
+    "subcategory_id": "sub-ohm-tanks"
+  }
+]

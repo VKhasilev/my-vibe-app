@@ -1,0 +1,21 @@
+{
+  "baseUrl": "https://www.cig.co.il",
+  "outputDir": "scripts/crawl/flavors",
+  "categories": [
+    { "url": "https://www.cig.co.il/flavors/riot-squad-flavor-shots.html", "category_id": "flavors", "subcategory_id": "riot-squad-flavors" },
+    { "url": "https://www.cig.co.il/flavors/vampire-vape.html", "category_id": "flavors", "subcategory_id": "vampire-vape-flavors" },
+    { "url": "https://www.cig.co.il/flavors/raw-flavor.html", "category_id": "flavors", "subcategory_id": "raw-flavors" },
+    { "url": "https://www.cig.co.il/flavors/flavourart.html", "category_id": "flavors", "subcategory_id": "flavourart-flavors" },
+    { "url": "https://www.cig.co.il/flavors/smoke-flavors.html", "category_id": "flavors", "subcategory_id": "smoke-flavors" },
+    { "url": "https://www.cig.co.il/flavors/iff-flavors.html", "category_id": "flavors", "subcategory_id": "iff-flavors" },
+    { "url": "https://www.cig.co.il/flavors/flavor-enhancers.html", "category_id": "flavors", "subcategory_id": "flavor-enhancers" },
+    { "url": "https://www.cig.co.il/flavors/inawera.html", "category_id": "flavors", "subcategory_id": "inawera-flavors" },
+    { "url": "https://www.cig.co.il/flavors/tpa.html", "category_id": "flavors", "subcategory_id": "tpa-flavors" },
+    { "url": "https://www.cig.co.il/flavors/flavorah.html", "category_id": "flavors", "subcategory_id": "flavorah-flavors" },
+    { "url": "https://www.cig.co.il/flavors/capella.html", "category_id": "flavors", "subcategory_id": "capella-flavors" },
+    { "url": "https://www.cig.co.il/flavors/cig-sc.html", "category_id": "flavors", "subcategory_id": "cig-flavors" }
+  ],
+  "keepOriginalImageUrl": true,
+  "maxProducts": 2000,
+  "delayMs": 600
+}

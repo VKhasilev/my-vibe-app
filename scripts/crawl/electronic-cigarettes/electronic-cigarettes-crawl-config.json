@@ -1,0 +1,15 @@
+{
+  "baseUrl": "https://www.cig.co.il",
+  "outputDir": "scripts/crawl/electronic-cigarettes",
+  "categories": [
+    { "url": "https://www.cig.co.il/electronic-cigarettes/cbd-pens.html", "category_id": "electronic-cigarettes", "subcategory_id": "cbd-vaporizers" },
+    { "url": "https://www.cig.co.il/electronic-cigarettes/prefilled-disposable-vape.html", "category_id": "electronic-cigarettes", "subcategory_id": "prefilled-disposables" },
+    { "url": "https://www.cig.co.il/electronic-cigarettes/disposable-e-cigs.html", "category_id": "electronic-cigarettes", "subcategory_id": "empty-disposables" },
+    { "url": "https://www.cig.co.il/electronic-cigarettes/advanced-mods.html", "category_id": "electronic-cigarettes", "subcategory_id": "advanced-mods" },
+    { "url": "https://www.cig.co.il/electronic-cigarettes/full-kits.html", "category_id": "electronic-cigarettes", "subcategory_id": "advanced-kits" },
+    { "url": "https://www.cig.co.il/electronic-cigarettes/pod-mods.html", "category_id": "electronic-cigarettes", "subcategory_id": "pod-kits" }
+  ],
+  "keepOriginalImageUrl": true,
+  "maxProducts": 2000,
+  "delayMs": 600
+}

@@ -1,0 +1,15 @@
+{
+  "baseUrl": "https://www.cig.co.il",
+  "outputDir": "scripts/crawl/accessories",
+  "categories": [
+    { "url": "https://www.cig.co.il/accessories/adapters.html", "category_id": "accessories", "subcategory_id": "thread-adapters" },
+    { "url": "https://www.cig.co.il/accessories/drip-tips.html", "category_id": "accessories", "subcategory_id": "replacement-drip-tips" },
+    { "url": "https://www.cig.co.il/accessories/cotton.html", "category_id": "accessories", "subcategory_id": "cotton" },
+    { "url": "https://www.cig.co.il/accessories/glasses-for-tanks.html", "category_id": "accessories", "subcategory_id": "replacement-glass" },
+    { "url": "https://www.cig.co.il/accessories/chargers.html", "category_id": "accessories", "subcategory_id": "chargers" },
+    { "url": "https://www.cig.co.il/accessories/batteries.html", "category_id": "accessories", "subcategory_id": "batteries" }
+  ],
+  "keepOriginalImageUrl": true,
+  "maxProducts": 2000,
+  "delayMs": 600
+}

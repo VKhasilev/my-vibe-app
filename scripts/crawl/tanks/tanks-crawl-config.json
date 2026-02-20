@@ -1,0 +1,11 @@
+{
+  "baseUrl": "https://www.cig.co.il",
+  "outputDir": "scripts/crawl/tanks",
+  "categories": [
+    { "url": "https://www.cig.co.il/tanks/regular-clearomizer.html", "category_id": "tanks", "subcategory_id": "mtl-tanks" },
+    { "url": "https://www.cig.co.il/tanks/sub-ohm-atomizers.html", "category_id": "tanks", "subcategory_id": "sub-ohm-tanks" }
+  ],
+  "keepOriginalImageUrl": true,
+  "maxProducts": 2000,
+  "delayMs": 600
+}
